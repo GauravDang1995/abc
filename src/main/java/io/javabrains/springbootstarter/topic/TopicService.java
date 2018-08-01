@@ -15,16 +15,31 @@ public class TopicService {
             new Topic("javascript","Javascript","Javascript Description")
     ));
 
-    public List<Topic> getAllTopics() {
+    public List<Topic> getAllTopics()
+    {
         return topics;
     }
 
     public Topic getTopic(String id)
+
     {
         return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
     }
 
-    public void addTopic(Topic topic) {
+    public void addTopic(Topic topic)
+    {
         topics.add(topic);
+    }
+
+    public void updateTopic(String id, Topic topic) {
+        for (int i=0;i<topics.size();i++)
+        {
+            Topic t=topics.get(i);
+            if(t.getId().equals(id))
+            {
+                topics.set(i,topic );
+                        return;
+            }
+        }
     }
 }
